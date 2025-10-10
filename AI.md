@@ -294,3 +294,55 @@ A planner that creates a flexible plan by only ordering actions when necessary.
 | **Feedback** | Direct feedback by comparing predictions to true labels.     | No direct feedback; success is often subjective.            |
 | **Common Tasks** | **Classification** and **Regression**.                       | **Clustering** and **Association**.                         |
 | **Algorithms** | Linear Regression, SVM, Decision Trees.                    | K-Means Clustering, PCA, Apriori.                           |
+
+
+# Expert System Architecture 🤖
+
+An **Expert System (ES)** is an AI program designed to mimic the decision-making ability of a human expert. It solves problems in a specific domain using a structured knowledge base and inference rules.
+
+---
+
+## 1️⃣ Key Components of an Expert System
+
+An Expert System has five main components:
+
+| Component                       | Function                                                                                                 |
+| ------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| **Knowledge Base** | Stores facts and rules about the domain. Example: “If symptom = fever, then disease = flu.”                |
+| **Inference Engine** | The brain of the system. Applies logical reasoning to the knowledge base to derive new facts or decisions. |
+| **User Interface** | Allows interaction with users. Users input queries and receive advice.                                   |
+| **Explanation Subsystem** | Explains how a conclusion was reached, increasing trust and transparency.                                |
+| **Knowledge Acquisition Subsystem** | Helps update or add new knowledge from human experts or other sources.                                   |
+
+---
+---
+
+## 3️⃣ How it Works (Step by Step)
+
+1.  **User Input**: A user enters a query through the user interface (e.g., “What disease does this patient have based on these symptoms?”).
+2.  **Inference Engine**: The engine searches the knowledge base using reasoning techniques like **forward chaining** (data-driven) or **backward chaining** (goal-driven).
+3.  **Knowledge Base**: Provides the relevant facts and rules needed to analyze the problem.
+4.  **Explanation Subsystem**: If requested, it details the "why" and "how" behind the conclusion, tracing the rules that were triggered.
+5.  **Knowledge Acquisition**: The knowledge base is updated or expanded over time with new expert knowledge to improve its accuracy and scope.
+
+---
+
+## 4️⃣ Example: Medical Diagnosis Expert System 🩺
+
+-   **Knowledge Base**: Contains rules like:
+    -   `IF patient has fever AND cough THEN possible_disease is flu`
+    -   `IF patient has rash AND fever THEN possible_disease is measles`
+
+-   **Inference Engine**: Checks the patient's symptoms against the rules in the knowledge base and deduces potential diseases.
+
+-   **Explanation Subsystem**: Can provide feedback to a doctor, such as:
+    > "The patient may have the flu because the reported symptoms (fever and cough) match the conditions defined in Rule #1."
+
+---
+
+## ✅ Key Points
+
+-   Expert Systems are highly **domain-specific** and are not designed for general problem-solving.
+-   Their core functionality relies on simulating human reasoning through the combination of a **knowledge base** and an **inference engine**.
+-   They are widely used in fields like medical diagnosis, financial planning, mechanical troubleshooting, and system configuration.
+
