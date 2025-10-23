@@ -15,12 +15,12 @@
 | 7 | Sairaj Khot | 18 Labs | No | High Potential | 35 credits wala underdog. |
 | 8 | Sara Kedar Deshmukh | 16 Labs | No | High Potential | - |
 | 9 | Shrawani Awgune | 0 Labs | No | No Potential | Reason: Laptop charger broken. |
-| 10 | Shashank Raju Kasturi | 18 Labs | No | High Potential | Reason: 3 labs left (daily limit). |
+| 10 | Shashank Raju Kasturi | 18 Labs | No | High Potential | Reason: 3 labs left of arcade (daily limit). |
 | 11 | Shyamdin Prajapati | 1 Lab | No | Low Potential | Reason: Genuine issue (laptop screen flickering, video confirmed). Will try to help him complete. |
 | 12 | Nandini Rathod | 18 Labs | No | - | - |
 | 13 | Atharva Hattargi | Done (19 Labs) | Done | - | - |
 | 14 | Dharvesh Jadhav | Done (400pts) | No | Potential | Badge not on public profile. Didn't pick up call. Will fix issues later. |
-| 15 | Prachi Jha | 19 Labs | No | - | - |
+| 15 | Prachi Jha | 19 Labs | No | - | 2 labs left of arcade |
 | 16 | Vivek Prasad | 19 Labs | No | - | - |
 | 17 | Swarup Khamitkar | 0 Labs | No | No Potential | Reason: Cuts call when mentor calls. Needs to be removed from group. :( |
 | 18 | Yuvraj Dogra | 19 Labs | No | - | - |
