@@ -100,6 +100,3 @@ Here’s a summary table for your Web Computing (Mumbai University, 2023–2025)
 
 ---
 
-> **Next Step:** Would you like me to make a “Last-Minute 1-Page Revision Sheet” (just key definitions + code snippets + diagrams for these top topics)?
->
-> It’ll be perfect for the night before exam prep — short, visual, and exam-oriented.
