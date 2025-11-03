@@ -253,3 +253,102 @@ $$f(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$$
 ---
 
 Would you like me to include the labeled diagram comparing their shapes (Sigmoid vs ReLU vs Tanh) to help visualize the difference clearly?
+
+# 🧠 Artificial Neural Networks (ANN) for Customer Churn Prediction
+
+This document explains how an Artificial Neural Network (ANN) is used to predict **Customer Churn**.
+
+---
+
+## 🎯 What is Customer Churn Prediction?
+
+**Customer Churn** occurs when a customer stops using a company’s product or service.
+
+The primary **goal** of churn prediction is to **identify customers who are likely to leave** so the company can implement targeted retention strategies.
+
+> **Example:** In a telecom context, if a customer terminates their subscription or stops using their SIM card, that is considered churn.
+
+---
+
+## 🔹 Why Use ANN for Churn Prediction?
+
+ANNs are exceptionally powerful for this task because they can:
+
+* **Learn Complex Patterns:** They automatically discover deep, non-linear relationships within customer behavioral data that simpler models might miss.
+* **Feature Combination:** They effectively combine and weigh multiple diverse features (e.g., usage, payment history, complaints) to form a unified prediction.
+* **Scalability:** They provide **accurate predictions** even when dealing with the large, high-dimensional datasets typical of customer behavior.
+
+---
+
+## ⚙️ Steps to Build an ANN for Churn Prediction
+
+### 1. Data Collection
+The foundation of the model relies on historical customer data:
+* **Demographics:** Age, gender, location.
+* **Usage/Behavior:** Monthly charges, tenure (time as a customer), service usage.
+* **Contract:** Contract type, payment method.
+* **Target Variable:** Whether the customer **churned (1)** or **did not churn (0)**.
+
+### 2. Data Preprocessing
+Preparing the data is crucial for model performance:
+* **Cleaning:** Handling missing values (imputation).
+* **Encoding:** Converting categorical variables (e.g., contract type, payment method) into numerical format.
+* **Scaling:** Normalizing or scaling numerical data (e.g., using `MinMaxScaler` or `StandardScaler`) to ensure all features contribute equally.
+* **Splitting:** Dividing the dataset into **training** and **testing** sets.
+
+### 3. Designing the ANN Model
+The network architecture is defined based on the problem:
+
+| Layer | Structure | Activation Function | Purpose |
+| :--- | :--- | :--- | :--- |
+| **Input Layer** | One neuron per feature (e.g., 10 features $\rightarrow$ 10 neurons) | N/A | Receives the processed customer data. |
+| **Hidden Layers** | Typically 1–2 dense layers (e.g., 16 and 8 neurons) | **ReLU** (`Rectified Linear Unit`) | Learns complex mappings and non-linearities. |
+| **Output Layer** | **1 neuron** | **Sigmoid** | Produces the final probability of churn (a value between 0 and 1). |
+
+### 4. Training the Model
+The ANN learns by minimizing prediction errors:
+* **Forward Propagation:** Input data moves through the network to generate a prediction.
+* **Loss Calculation:** The prediction is compared to the actual churn outcome using the **Binary Cross-Entropy** loss function.
+* **Backpropagation:** The error is sent backward through the network, and an **optimizer** (like **Adam** or **SGD**) adjusts the weights to reduce the loss.
+
+### 5. Testing and Evaluation
+Model performance is assessed on the unseen test set using key metrics:
+* **Accuracy:** Overall correct predictions.
+* **Precision/Recall:** Important for classifying the minority class (churned customers).
+* **Confusion Matrix:** Shows true positives, true negatives, false positives, and false negatives.
+* **ROC-AUC Curve:** Measures the model's ability to distinguish between churners and non-churners.
+
+---
+
+## 💻 Example: Python Code (Keras)
+
+A basic implementation using the Keras framework:
+
+```python
+from keras.models import Sequential
+from keras.layers import Dense
+
+# Assume X_train, y_train, X_test, y_test are preprocessed data
+input_features = 10 # Example: if you have 10 input features
+
+# Create ANN model
+model = Sequential([
+    Dense(16, input_dim=input_features, activation='relu'),  # Input + 1st Hidden Layer
+    Dense(8, activation='relu'),                             # 2nd Hidden Layer
+    Dense(1, activation='sigmoid')                           # Output Layer (Churn Probability)
+])
+
+# Compile the model
+model.compile(optimizer='adam', 
+              loss='binary_crossentropy', 
+              metrics=['accuracy'])
+
+# Train the model
+model.fit(X_train, y_train, 
+          epochs=50, 
+          batch_size=10, 
+          validation_data=(X_test, y_test))
+
+# Evaluate
+loss, accuracy = model.evaluate(X_test, y_test)
+print(f"\nModel Accuracy on Test Set: {accuracy*100:.2f}%")
