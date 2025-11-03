@@ -450,3 +450,48 @@ Adam is currently the most popular choice for deep learning because it combines 
 ---
 
 Would you like me to provide a simple diagram showing how the loss decreases over epochs with Adam versus SGD to help visualize their difference nicely?
+
+
+# 🧠 Forward and Backward Propagation in ANN (Customer Churn Prediction)
+
+## 🔹 1. Forward Propagation (Prediction Step)
+- In this step, the input data (like **customer age, tenure, monthly charges**, etc.) is passed through the network.
+- Each layer has **weights** and **biases** that transform the input and apply an **activation function** (such as ReLU or Sigmoid).
+- The output layer gives the **final prediction**, e.g.:
+  - `0.9` → Customer likely to **churn (leave)**
+  - `0.1` → Customer likely to **stay**
+
+> 🧩 Think of forward propagation as the **"prediction" phase** of the model.
+
+---
+
+## 🔹 2. Backward Propagation (Learning Step)
+- After getting the prediction, the model compares it with the **actual result** using a **loss function** (like *Binary Cross-Entropy*).
+- Then, it calculates how much **each weight contributed to the error** using the **chain rule** (mathematics).
+- Using an **optimizer** (like *Adam* or *SGD*), the model updates its weights to **reduce the error** in the next iteration.
+
+> 🔁 Think of backward propagation as the **"learning from mistakes"** phase.
+
+---
+
+## 🔹 Example
+- Model predicts churn = **0.8 (80%)**, but actual label = **1 (customer left)**.
+- The loss function calculates the **error**.
+- Backpropagation updates weights to make the next prediction **closer to 1**.
+
+---
+
+## ⚙️ In Short
+
+| Step | Name | What Happens | Example |
+|------|------|---------------|----------|
+| 1 | Forward Propagation | Model makes a prediction | “Customer will churn with 80% probability” |
+| 2 | Backward Propagation | Model learns from the error and updates weights | Adjusts weights to improve next prediction |
+
+---
+
+✨ **Summary:**
+> Forward Propagation = Prediction  
+> Backward Propagation = Learning
+
+These two steps work together to help the ANN become more accurate at predicting **customer churn** over time.
