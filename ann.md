@@ -352,3 +352,101 @@ model.fit(X_train, y_train,
 # Evaluate
 loss, accuracy = model.evaluate(X_test, y_test)
 print(f"\nModel Accuracy on Test Set: {accuracy*100:.2f}%")
+
+# 📉 Loss Function, Binary Cross-Entropy, and Optimizers
+
+This document provides a clear explanation of how **Loss Functions** and **Optimizers** work in the context of Artificial Neural Network (ANN) training, specifically focusing on binary classification tasks like Customer Churn Prediction.
+
+---
+
+## 🧠 1. Loss Function (Error Function)
+
+### 🔹 Definition
+A Loss Function (or Cost Function) is a metric that **measures the disparity** between the model's **predicted output ($\hat{y}$)** and the **actual output ($y$)**.
+
+The function tells the model **how wrong its predictions are**. The fundamental goal of training an ANN is to **minimize the loss** by iteratively adjusting the network's weights.
+
+> **Goal:** Smaller Loss $\implies$ Better Model Performance.
+
+### 🔹 Example
+* **Actual $y = 1$** (customer churned) and **Predicted $\hat{y} = 0.9$** (high probability of churn). **Loss is small** $\rightarrow$ Good prediction.
+* **Actual $y = 1$** and **Predicted $\hat{y} = 0.1$** (low probability of churn). **Loss is large** $\rightarrow$ Bad prediction.
+
+---
+
+## ⚙️ 2. Binary Cross-Entropy Loss (BCE)
+
+BCE is the standard loss function used when the output layer has **two classes (0 or 1)**, making it ideal for tasks like churn prediction.
+
+### 📘 Formula
+The Binary Cross-Entropy loss calculated over $N$ samples is:
+
+$$L = -\frac{1}{N} \sum_{i=1}^{N} [y_i \log(\hat{y}_i) + (1 - y_i)\log(1 - \hat{y}_i)]$$
+
+Where:
+* $y_i$ = The **actual output** (ground truth: 0 or 1).
+* $\hat{y}_i$ = The **predicted probability** (output of the Sigmoid function: $0 < \hat{y}_i < 1$).
+* $N$ = The number of samples.
+
+### 🔹 Intuition
+BCE strongly penalizes confident wrong answers:
+* If the **actual $y=1$**, the term $(1 - y_i)\log(1 - \hat{y}_i)$ becomes zero. The model is penalized if it predicts a low $\hat{y}$ (since $\log(\text{small number}) \approx -\infty$, making the overall loss large).
+* If the **actual $y=0$**, the term $y_i \log(\hat{y}_i)$ becomes zero. The model is penalized if it predicts a high $\hat{y}$ (since $\log(1 - \text{high number}) \approx -\infty$, making the overall loss large).
+
+| Actual ($y$) | Predicted ($\hat{y}$) | Loss | Outcome |
+| :---: | :---: | :--- | :--- |
+| **1** | **0.9** | Low loss | Correct & confident |
+| **1** | **0.1** | **High loss** | Incorrect & confident |
+| **0** | **0.1** | Low loss | Correct & confident |
+| **0** | **0.9** | **High loss** | Incorrect & confident |
+
+---
+
+## ⚙️ 3. Optimizers
+
+An Optimizer is an algorithm used to **update the weights** in the neural network to **minimize the Loss Function** during the training process.
+
+### 🔹 (a) SGD — Stochastic Gradient Descent
+
+#### 🔸 How it works
+SGD is the most fundamental optimizer. For each training step, it:
+1.  Calculates the **gradient** (the slope of the loss function with respect to the weights).
+2.  Updates the weights in the direction **opposite** to the gradient (the direction of steepest descent).
+
+$$\mathbf{w_{new}} = \mathbf{w_{old}} - \eta \frac{\partial L}{\partial \mathbf{w}}$$
+
+* $\eta$ (eta) is the **learning rate**, which controls the size of the step taken.
+
+#### ✅ Pros & ⚠️ Cons
+| Pros (✅) | Cons (⚠️) |
+| :--- | :--- |
+| Simple to implement and widely understood. | **Slow convergence** for complex landscapes. |
+| Works well for very large datasets. | Can **oscillate** around the minimum or get stuck in a local minimum. |
+| | Highly sensitive to the choice of learning rate ($\eta$). |
+
+### 🔹 (b) Adam — Adaptive Moment Estimation
+
+#### 🔸 How it works
+Adam is currently the most popular choice for deep learning because it combines the best features of other optimizers:
+* **Momentum:** It tracks a running average of past gradients (like a ball rolling downhill).
+* **Adaptive Learning Rate:** It calculates a unique, dynamic learning rate for **each parameter** based on the past squared gradients.
+
+#### ✅ Pros & ⚠️ Cons
+| Pros (✅) | Cons (⚠️) |
+| :--- | :--- |
+| **Faster convergence** due to adaptive step sizes. | Slightly more complex and memory-intensive. |
+| Requires less tuning; less sensitive to $\eta$. | Can sometimes **overshoot** the optimal point due to its momentum term. |
+| The **default choice** for most complex, deep neural networks. | |
+
+---
+
+## 🔸 Comparison Table
+
+| Optimizer | Learning Type | Speed | Key Feature | Common Use |
+| :--- | :--- | :--- | :--- | :--- |
+| **SGD** | Fixed global learning rate ($\eta$) | Slower | Simple gradient descent mechanism. | Small or very simple models; baseline comparisons. |
+| **Adam** | **Adaptive** learning rate for each weight | **Faster** | Uses **Momentum** + **Adaptive Step Size**. | **Deep Neural Networks** and complex problems (often the default choice). |
+
+---
+
+Would you like me to provide a simple diagram showing how the loss decreases over epochs with Adam versus SGD to help visualize their difference nicely?
