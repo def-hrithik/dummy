@@ -162,3 +162,94 @@ model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']
 
 # Train model
 model.fit(X_train, y_train, epochs=50, batch_size=10, validation_data=(X_test, y_test))
+
+# 💡 Common Activation Functions in Neural Networks
+
+This document provides a clear and simple overview of the three most common activation functions used in Artificial Neural Networks: **Sigmoid**, **ReLU**, and **Tanh**.
+
+---
+
+## 🔹 1. Sigmoid Function
+
+### 📘 Definition
+The Sigmoid activation function maps input values into a range between **0 and 1**.
+
+$$f(x) = \frac{1}{1 + e^{-x}}$$
+
+### 📊 Example Values
+| $x$ | $f(x)$ |
+| :---: | :---: |
+| -2 | 0.12 |
+| 0 | 0.5 |
+| 2 | 0.88 |
+
+### ⚙️ Key Points
+* **Output Range:** $(0, 1)$
+* **Use Case:** Good for **binary classification** (outputting a probability).
+* **Feature:** It is a smooth and fully **differentiable** function.
+
+### ⚠️ Drawbacks
+* **Vanishing Gradient Problem:** For very high or very low input values ($x$), the gradient becomes extremely close to zero, which slows down or halts learning in deep networks.
+* **Slow Learning:** Generally slower for training deep networks.
+
+---
+
+## 🔹 2. ReLU (Rectified Linear Unit)
+
+### 📘 Definition
+ReLU outputs the input directly if it's positive, and outputs **0** otherwise.
+
+$$f(x) = \max(0, x)$$
+
+### 📊 Example Values
+| $x$ | $f(x)$ |
+| :---: | :---: |
+| -3 | 0 |
+| 0 | 0 |
+| 2 | 2 |
+
+### ⚙️ Key Points
+* **Output Range:** $[0, \infty)$
+* **Use Case:** **Fast** and **simple**, making it the most commonly used function in **hidden layers** of deep networks.
+* **Advantage:** Helps mitigate the **vanishing gradient problem** for positive inputs.
+
+### ⚠️ Drawbacks
+* **Dying ReLU Problem:** If a large gradient flows through a ReLU neuron, it can cause the neuron to output 0 permanently. Once the output is 0, the gradient is 0, and the neuron can never activate again, effectively "dying."
+
+---
+
+## 🔹 3. Tanh (Hyperbolic Tangent)
+
+### 📘 Definition
+Tanh is similar to Sigmoid but outputs values in a range between **-1 and 1**.
+
+$$f(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$$
+
+### 📊 Example Values
+| $x$ | $f(x)$ |
+| :---: | :---: |
+| -2 | -0.96 |
+| 0 | 0 |
+| 2 | 0.96 |
+
+### ⚙️ Key Points
+* **Output Range:** $(-1, 1)$
+* **Advantage:** The output is **zero-centered**, meaning the mean activation is closer to zero. This is often better for optimizing weights during backpropagation.
+* **Performance:** Often performs **better than Sigmoid** in hidden layers.
+
+### ⚠️ Drawbacks
+* **Vanishing Gradient:** Still suffers from the vanishing gradient problem for large absolute values of $x$ (i.e., $|x|$).
+
+---
+
+## 🔸 Quick Comparison Table
+
+| Function | Formula | Output Range | Pros | Cons | Common Use |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Sigmoid** | $\frac{1}{1 + e^{-x}}$ | $(0, 1)$ | Smooth, probabilistic. | Vanishing gradient, not zero-centered. | Output layer (binary classification). |
+| **Tanh** | $\frac{e^x - e^{-x}}{e^x + e^{-x}}$ | $(-1, 1)$ | Zero-centered output. | Vanishing gradient for large inputs. | Hidden layers. |
+| **ReLU** | $\max(0, x)$ | $[0, \infty)$ | Fast, no vanishing gradient (for $x>0$). | Dying ReLU problem. | Hidden layers (**most common**). |
+
+---
+
+Would you like me to include the labeled diagram comparing their shapes (Sigmoid vs ReLU vs Tanh) to help visualize the difference clearly?
