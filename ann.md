@@ -353,6 +353,12 @@ model.fit(X_train, y_train,
 loss, accuracy = model.evaluate(X_test, y_test)
 print(f"\nModel Accuracy on Test Set: {accuracy*100:.2f}%")
 
+
+
+
+
+
+
 # 📉 Loss Function, Binary Cross-Entropy, and Optimizers
 
 This document provides a clear explanation of how **Loss Functions** and **Optimizers** work in the context of Artificial Neural Network (ANN) training, specifically focusing on binary classification tasks like Customer Churn Prediction.
