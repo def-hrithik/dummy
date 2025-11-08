@@ -188,3 +188,24 @@ flowchart TD
   classDef focus fill:#42A5F5,stroke:#0D47A1,color:#fff;
   classDef goal fill:#673AB7,stroke:#311B92,color:#fff;
 ```
+
+## 🌐 Wheel of Life Overview – Hrithik Singh
+
+```mermaid
+%% 🌱 Wheel of Life Scores (Visual Summary)
+flowchart TD
+    T["🏆 PERSONAL DEVELOPMENT MATRIX"]:::title
+
+    A["🩺 Health — 0.69<br/>**Responsible & Fulfilled**<br/>████████████░░░"]:::high
+    B["🧘 Self-Awareness — 0.65<br/>**Committed & Discovering**<br/>███████████░░░"]:::high
+    C["💼 Work & Education — 0.42<br/>**Smart & Practical**<br/>█████░░░░░░░░░░"]:::mid
+    D["💬 Relationships — 0.36<br/>**Introvert & Reticent**<br/>████░░░░░░░░░░░░"]:::low
+    E["💰 Wealth — 0.33<br/>**Safety & Secure**<br/>███░░░░░░░░░░░░░░░"]:::low
+
+    T --> A --> B --> C --> D --> E
+
+    classDef title fill:#1E88E5,stroke:#0D47A1,color:#fff,font-weight:bold;
+    classDef high fill:#4CAF50,stroke:#2E7D32,color:#fff;
+    classDef mid fill:#FFB300,stroke:#E65100,color:#000;
+    classDef low fill:#F44336,stroke:#B71C1C,color:#fff;
+```
