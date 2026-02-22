@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="IMG-20260222-WA0080.jpg" width="100%" align="center" />
+  <img src="IMG-20260222-WA0080.jpg" width="150" alt="CertChain Logo" />
 </p>
 
 <div align="center">
