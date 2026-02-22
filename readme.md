@@ -16,210 +16,67 @@
 
 ---
 
-## Introduction
+## Contribution Guidelines
 
-**CertChain** is a blockchain-based certificate verification system that leverages **Ethereum smart contracts** to create an **immutable registry** for academic and professional certificates. By moving away from centralized databases, CertChain ensures that once a certificate is issued, its authenticity can be verified by anyone, anywhere — without relying on a single point of failure or trust.
-
-The project aims to bring **transparency**, **security**, and **decentralization** to credential verification.
+**CertChain** is a blockchain-based certificate verification system that leverages **Ethereum smart contracts** to create an **immutable registry** for academic and professional certificates. We welcome contributions from developers who want to help build a more transparent and secure credential verification system.
 
 ---
 
-## Development Standards
+## How to Get Started
 
-To maintain code quality, security, and backward compatibility, all contributors must adhere to the following governance standards.
-
-| Standard | Requirement | Consequence |
-|----------|-------------|-------------|
-| **Branching** | Create a new branch for every feature or bug fix | Direct commits to `main` or `develop` are prohibited |
-| **Contract Integrity** | Do not modify existing smart contracts | Create new contract files for new functionality |
-| **Demo Video** | All PRs must include a Google Drive video link | PRs without demos will be rejected |
-
----
-
-### Branching Strategy
-
-```bash
-git checkout -b feature/your-feature-name
-```
+| Step | Action | Command |
+|------|--------|---------|
+| a | Fork the repository | Click "Fork" on GitHub |
+| b | Clone the repository | `git clone https://github.com/YOUR_USERNAME/certchain.git` |
+| c | Create a branch | `git checkout -b feature/your-feature-name` |
+| d | Make your changes | — |
+| e | Commit your changes | `git commit -m "Add: description of changes"` |
+| f | Push your changes | `git push origin feature/your-feature-name` |
+| g | Submit a pull request | Open PR on GitHub |
 
 ---
 
-### Smart Contract Integrity
-
-If business logic changes or new functionality is required:
-
-| Action | Status |
-|--------|--------|
-| Create a new contract file (e.g., `CertificateV2.sol`) | Required |
-| Ensure backward compatibility with existing contracts | Required |
-| Alter deployed contract logic | Prohibited |
-| Change function signatures in existing contracts | Prohibited |
-
-This standard ensures that previously issued certificates remain verifiable and that the integrity of the blockchain record is preserved.
-
----
-
-### Demonstration Requirement
-
-The Pull Request must contain a public Google Drive link to a video demonstrating:
+## Requirement of Pull Request
 
 | Requirement | Description |
 |-------------|-------------|
-| Feature Demo | The feature in action |
-| Blockchain Interaction | MetaMask transactions, contract calls |
-| Comparison | Before/after comparison (if applicable) |
-
-**Format:** `https://drive.google.com/file/d/YOUR_VIDEO_ID/view?usp=sharing`
-
----
-
-## Open Innovation Tracks
-
-| Track | Goal | Contract Rule |
-|-------|------|---------------|
-| QR Code Verification | Bridge physical certificates and digital verification | Use existing contract |
-| Bulk Certificate Processing | Eliminate manual entry for institutions | Create NEW contract |
-| General Improvements | UI/UX, Security, Infrastructure, Scalability | Depends on scope |
+| a. Solution Description | Clear explanation of what your code does |
+| b. Libraries/Packages Used | List all dependencies added |
+| c. Video Link | Google Drive link demonstrating the working feature |
+| d. Issue Number | Reference the issue (e.g., #2) |
 
 ---
 
-### 1. Feature Request: Cryptographic QR Code Verification
+## Open Innovation Section
 
-**Goal:** Bridge the gap between physical certificates and digital verification.
+Open Innovation allows contributors to propose and implement their own ideas to improve CertChain. If you have a feature idea that is not listed in the existing issues, you can create your own issue and work on it.
 
-#### Problem Statement
+### How to Get Started on It
 
-| Current State | Status |
-|---------------|--------|
-| Certificate ID generated | Yes |
-| Blockchain hash generated | Yes |
-| QR code generated | No |
-| QR-based verification mechanism | No |
-
-This limits ease of verification and prevents seamless mobile validation.
-
-#### Proposed Enhancement
-
-| Phase | Action |
-|-------|--------|
-| **Issuance (Admin)** | Generate QR Code containing certificate hash and ID |
-| | Embed QR code in digital certificate (PDF/image) |
-| | Store QR reference in database record |
-| **Verification (User)** | Upload or scan QR code |
-| | System decodes QR, extracts hash, queries blockchain |
-| | Display result: Valid or Invalid Certificate |
-
-#### Acceptance Criteria
-
-| Criteria | Status |
-|----------|--------|
-| QR code auto-generated on certificate issuance | [ ] |
-| QR contains certificate hash or secure verification URL | [ ] |
-| QR embedded in downloadable certificate | [ ] |
-| Users can upload/scan QR to verify | [ ] |
-| Clear verification result displayed | [ ] |
+| Step | Action |
+|------|--------|
+| 1 | Find a feature you want to build |
+| 2 | Create an issue describing the feature |
+| 3 | Solve the issue |
+| 4 | Send the pull request |
 
 ---
 
-### 2. Feature Request: Bulk Certificate Processing
+## Rules and Protocol
 
-**Goal:** Eliminate manual certificate entry for institutions.
-
-#### Problem Statement
-
-| Issue | Impact |
-|-------|--------|
-| Single-entry system | Time-consuming manual work |
-| Manual data entry | Increased error rate |
-| No batch processing | Scalability limitations |
-| Sequential blockchain calls | Delays in certificate issuance |
-
-#### Proposed Solution
-
-Build a **Bulk Certificate Processing Module**:
-
-| Feature | Description |
-|---------|-------------|
-| File Upload | CSV / Excel / JSON format support |
-| Batch Validation | Validate all records before processing |
-| Auto Generation | Automated certificate creation |
-| Bulk Hashing | Batch blockchain transactions |
-| Status Tracking | Success / Failed / Pending per certificate |
-
-#### Acceptance Criteria
-
-| Criteria | Status |
-|----------|--------|
-| Upload file with multiple student records | [ ] |
-| Bulk processing without manual entry | [ ] |
-| Certificates correctly stored on blockchain | [ ] |
-| Existing single-certificate flow remains unaffected | [ ] |
-
-**Note:** Create a NEW contract for this feature. Do not modify existing contracts.
+| Rule | Description |
+|------|-------------|
+| 1 | Must create a new branch to implement the feature |
+| 2 | No changes in existing contracts. Create new contract in `contracts/` folder |
+| 3 | Follow existing folder structure |
 
 ---
 
-### 3. General Improvements
+## NOTE
 
-**Goal:** Contribute ideas to improve CertChain.
+The **first contributor** solving the issue with proper working code will get the certificate.
 
-| Track | Examples |
-|-------|----------|
-| UI/UX | Dark mode, accessibility, mobile-first design |
-| Security | Audit reports, penetration testing, vulnerability fixes |
-| Infrastructure | CI/CD pipelines, Docker setup, testing frameworks |
-| Scalability | Gas optimization, Layer 2 research, IPFS integration |
-
-Open an issue to discuss proposals before starting development.
-
----
-
-## Security Standards
-
-All smart contract contributions must pass security verification before submission.
-
-### Mandatory Security Checks
-
-| Tool | Command | Purpose |
-|------|---------|---------|
-| Slither | `slither .` | Static analysis for vulnerabilities |
-| Mythril | `myth analyze contracts/YourContract.sol` | Security analysis and bug detection |
-
-### Security Checklist
-
-| Requirement | Status |
-|-------------|--------|
-| No reentrancy vulnerabilities | [ ] |
-| Proper access control implemented | [ ] |
-| Integer overflow/underflow protected (Solidity ^0.8.0+) | [ ] |
-| No hardcoded sensitive values | [ ] |
-| Gas optimization reviewed | [ ] |
-| All tests passing | [ ] |
-
----
-
-## Community
-
-CertChain is a learning platform managed by **Google Developer Group MGMCET**.
-
-### Motto
-
-> "Code responsibly. Build securely. Contribute confidently."
-
-### Get Involved
-
-| Action | How |
-|--------|-----|
-| Found a bug? | Open an issue |
-| Have an idea? | Start a discussion |
-| Want to contribute? | Read [CONTRIBUTING.md](CONTRIBUTING.md) |
-| Need help? | Reach out to GDG MGMCET team |
-
----
-
-## License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+In **Open Innovation**, the one who created the issue will get the certificate only if the solution is working perfectly.
 
 ---
 
